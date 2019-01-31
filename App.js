@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
 import productnavigation from './components/Products/productnavigation'
 import categorynavigation from './components/Category/categorynavigation';
 import usernavigation from './components/Users/usernavigation';
-
+import accountsnavigation from './components/Accounts/accountsnavigation';
 import Icon from 'react-native-vector-icons/Ionicons'
 import ordernavigation from './components/Orders/ordernavigation'
 import store from './project11/redux/store'
@@ -54,13 +54,22 @@ import store from './project11/redux/store'
         <Icon name="ios-home" color={tintColor} size={24} />
       )
     }
-  }
+  },
+  accountsnavigation: {
+    screen: accountsnavigation,
+    navigationOptions: {
+      tabBarLabel: 'Account',
+     tabBarIcon: ({ tintColor }) => (
+        <Icon name="ios-settings" color={tintColor} size={24} />
+      )
+    }
+  },
  
   
 
 }, {//router config
     initialRouteName: 'ordernavigation',
-    order: ['ordernavigation', 'productnavigation','categorynavigation','usernavigation'],
+    order: ['ordernavigation', 'productnavigation','categorynavigation','usernavigation','accountsnavigation'],
     //navigation for complete tab navigator
     navigationOptions: {
       tabBarVisible: true

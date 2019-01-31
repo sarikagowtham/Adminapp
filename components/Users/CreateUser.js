@@ -1,90 +1,146 @@
 import React, { Component } from 'react';
-import { View, TextInput,StyleSheet,Picker,ScrollView} from 'react-native';
+import { View, TextInput,StyleSheet,Picker,ScrollView,Dimensions} from 'react-native';
 import { Button,Header } from 'react-native-elements';
 import {Icon} from "react-native-vector-icons";
-export default class CreateUser extends Component {
+import {connect} from 'react-redux';
+import {registerUser} from '../../project11/redux/actions/authActions';
+const Blue = "#428AF8";
+const Light_gray="#D3D3D3";
+
+ class CreateUser extends Component {
   constructor(props){
     super(props);
   this.state={
     name:'',
     mobilenumber:'',
+password:'',
 
   };
+  state={isFocused:false}
+
+
+
+
+  handleFocus=event=>{
+    this.setState({isFocused:true});
+
+    if(this.props.onFocus)
+      this.props.onFocus(event)
   }
+}
   render() {
-    const { navigate } = this.props.navigation;
+    //const { navigate } = this.props.navigation;
+     
+    const{isFocused}=this.state;
+    const {onFocus}=this.props;
+    const {minHeight} = this.state;
+// Manually memorise changing style or use something like reselect...
+if (this.lastMinHeight != minHeight) {
+    this.lastMinHeight = minHeight;
+    this.contentContainerStyle = {minHeight: minHeight}}
      return (
       
     
         <View style= {styles.container}>
-       <ScrollView contentContainerStyle={{flexGrow: 1}}>
+     <ScrollView
+    contentContainerStyle={{flexGrow : 1, justifyContent : 'center',height : Dimensions.get('window').height}}>
+
      
-       
+       <View>
+       <View style={{flexDirection: 'row',justifyContent:'flex-end'}}>
         <Button style={styles.Button}
          title="Reset"
-         type="outline"
+        
+         type="solid"
+         
          />
-         <Picker
-         style={{height: 50, width: 150}}>
-         <Picker.Item label="Admin"/>
-         <Picker.Item label="Staff"/>
-         <Picker.Item label="Logistics"/>
-         <Picker.Item label="Customer"/>
-         </Picker>
+         </View>
+         
  
-        <TextInput style = {styles.input} 
-        placeholder='Name' 
-        placeholderTextColor='#808080'
+        <TextInput 
+      placeholder="Name"
+      selectionColor={Blue}
+      underlineColorAndroid={isFocused ? Blue : Light_gray}
+      onFocus={this.handleFocus}
+      style={styles.textinput}
       
         onChangeText={(name)=>this.setState({name})}   
         value={this.state.name} />
 
-       <TextInput style = {styles.input}   
+       <TextInput  
        placeholder='Mobile Number' 
-       placeholderTextColor='#808080'
+       selectionColor={Blue}
+      underlineColorAndroid={isFocused ? Blue : Light_gray}
+      onFocus={this.handleFocus}
+      style={styles.textinput}
       
        onChangeText= {(mobilenumber)=>this.setState({mobilenumber})}
        value={this.state.mobilenumber}/>
 
        
-       <TextInput style = {styles.input}   
+       <TextInput   
        placeholder='Email' 
-       placeholderTextColor='#808080'/>   
+       selectionColor={Blue}
+      underlineColorAndroid={isFocused ? Blue : Light_gray}
+      onFocus={this.handleFocus}
+      style={styles.textinput}/>   
        
-       <TextInput style = {styles.input}   
+       <TextInput 
        placeholder='Password' 
-       placeholderTextColor='#808080'/>
+       selectionColor={Blue}
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}
+       onChangeText= {(password)=>this.setState({password})}
+       value={this.state.password}
+       />
 
-       
-       <TextInput style = {styles.input}   
+
+       <TextInput   
        placeholder='Landmark' 
-       placeholderTextColor='#808080'/>
+       selectionColor={Blue}
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}/>
 
        
-       <TextInput style = {styles.input}   
+       <TextInput  
        placeholder='Pincode' 
-       placeholderTextColor='#808080'/>
+       selectionColor={Blue}
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}/>
 
        
-       <TextInput style = {styles.input}   
+       <TextInput  
        placeholder='State' 
-       placeholderTextColor='#808080'/>
+       selectionColor={Blue}
+      underlineColorAndroid={isFocused ? Blue : Light_gray}
+      onFocus={this.handleFocus}
+      style={styles.textinput}/>
 
        
-       <TextInput style = {styles.input}    
+       <TextInput  
        placeholder='Delivery Address' 
-       placeholderTextColor='#808080'/> 
-        </ScrollView> 
+       selectionColor={Blue}
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}/> 
+       
         <Button style={styles.Button}
          title="Register"
          type="solid"
          onPress={() =>
-          navigate('Users', {
+         this.props.registerUser({
+           
             name: this.state.name,
-            mobilenumber:this.state.mobilenumber
-          })
+            mobilenumber:this.state.mobilenumber,
+           password:this.state.password
+
+         })
         }/>
-         
+        </View>
+         </ScrollView>  
        </View>   
 
        
@@ -93,27 +149,26 @@ export default class CreateUser extends Component {
 }
   const styles = StyleSheet.create({
     container: {
-        flex:0.5,
+        flex:1,
         flexDirection: 'column',
         padding: 10
     },
-    input:{
-       
-        height: 40,
-        backgroundColor: '#D3D3D3',
-        marginBottom: 30,
-        padding: 10,
-        color: '#000000'
-    
-    },
-    Button:{
+    textinput:{
       height:50,
-      width:20,
+      paddingLeft:6
+  },
+    Button:{
+      height:10,
+      width:10,
       padding:5,
-      marginTop:10,
-      marginBottom:10
+    marginRight:20
+
 
 
     },
    
 })
+const mapStateToProps = (state) =>({
+  auth: state.auth
+});
+export default connect(mapStateToProps,{registerUser})(CreateUser);
