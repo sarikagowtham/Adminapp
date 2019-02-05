@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native'
+import { ScrollView } from 'react-native';
 import { Card } from 'react-native-elements'
 //import CreateUsers from './CreateUser';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {displayUser} from '../../project11/redux/actions/userDisplayActions';
+import {
+  Spinner,
+  Icon,
+  List,
+  ListItem,
+  Thumbnail,
+  Body,
+  Text,
+  } from 'native-base';
  class Users extends Component {
   componentWillMount(){
     this.props.displayUser();
@@ -13,23 +22,22 @@ import {displayUser} from '../../project11/redux/actions/userDisplayActions';
     render() {
      
        return(
-           <View>
-       <Card>
-  
-{this.props.displayuser.map(user=>(
-  
-  <Text key={user._id} user={user} >
-{user.name}
-</Text>
-
-))  
-}
- 
- 
- 
-</Card>
-
-</View>
+        <ScrollView>
+       
+        <List>
+        {this.props.displayuser.map(p => (
+        <ListItem key={p.id}>
+        
+        <Body>
+      
+        <Text>{p.name}</Text>
+       
+      
+        </Body>
+        </ListItem>
+        ))}
+        </List>
+        </ScrollView>
 )
        }
     }

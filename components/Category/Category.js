@@ -31,7 +31,7 @@ const Light_gray="#D3D3D3";
     const{isFocused}=this.state;
     const {onFocus}=this.props;
     return (
-     <View style={{ justifyContent: 'center', margin: 8,  }}>
+     <View style={{ justifyContent: 'center', margin: 8,}}>
      <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
      <TouchableOpacity onPress={this.handleSubmit}>
                 <Text style={styles.button}>Create </Text>

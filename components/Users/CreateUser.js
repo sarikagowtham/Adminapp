@@ -41,7 +41,7 @@ if (this.lastMinHeight != minHeight) {
      return (
       
     
-        <View style= {styles.container}>
+      <View>
      <ScrollView
     contentContainerStyle={{flexGrow : 1, justifyContent : 'center',height : Dimensions.get('window').height}}>
 
@@ -55,7 +55,17 @@ if (this.lastMinHeight != minHeight) {
          
          />
          </View>
+         <Picker
+         style={{height: 50, width: 150}}
+         selectedValue={(this.state && this.state.pickerValue) || 'a'}
+         onValueChange={(value) => {
+           this.setState({pickerValue: value});}}>
+         <Picker.Item label="Admin" value={'a'}/>
+         <Picker.Item label="Customer" value={'b'}/>
+           <Picker.Item label="Logistics" value={'c'}/>
+           <Picker.Item label="Staff" value={'d'}/>
          
+      </Picker>
  
         <TextInput 
       placeholder="Name"
@@ -87,6 +97,7 @@ if (this.lastMinHeight != minHeight) {
        
        <TextInput 
        placeholder='Password' 
+       secureTextEntry={true} 
        selectionColor={Blue}
        underlineColorAndroid={isFocused ? Blue : Light_gray}
        onFocus={this.handleFocus}
@@ -148,11 +159,7 @@ if (this.lastMinHeight != minHeight) {
   }
 }
   const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        flexDirection: 'column',
-        padding: 10
-    },
+   
     textinput:{
       height:50,
       paddingLeft:6

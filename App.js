@@ -11,10 +11,10 @@ import productnavigation from './components/Products/productnavigation'
 import categorynavigation from './components/Category/categorynavigation';
 import usernavigation from './components/Users/usernavigation';
 import accountsnavigation from './components/Accounts/accountsnavigation';
-import Icon from 'react-native-vector-icons/Ionicons'
+//import Icon from 'react-native-vector-icons/Ionicons'
 import ordernavigation from './components/Orders/ordernavigation'
 import store from './project11/redux/store'
-
+import { Icon, Header, Left, Body, Right, Title,Button } from 'native-base';
   
 
 
@@ -24,7 +24,7 @@ import store from './project11/redux/store'
     navigationOptions: {
       tabBarLabel: 'Orders',
       tabBarIcon: ({ tintColor }) => (
-       <Icon name="ios-home" color={tintColor} size={24} />
+       <Icon name="paper" color={tintColor} size={24} />
       )
     }
   },
@@ -33,7 +33,7 @@ import store from './project11/redux/store'
     navigationOptions: {
       tabBarLabel: 'Products',
      tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-settings" color={tintColor} size={24} />
+        <Icon name="grid" color={tintColor} size={24} />
       )
     }
   },
@@ -42,7 +42,7 @@ import store from './project11/redux/store'
     navigationOptions: {
       tabBarLabel: 'Category',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-home" color={tintColor} size={24} />
+        <Icon name="book" color={tintColor} size={24} />
       )
     }
   },
@@ -51,7 +51,7 @@ import store from './project11/redux/store'
     navigationOptions: {
       tabBarLabel: 'Users',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-home" color={tintColor} size={24} />
+        <Icon name="person" color={tintColor} size={24} />
       )
     }
   },
@@ -80,7 +80,7 @@ import store from './project11/redux/store'
     }
   });
   
- const stack=createStackNavigator({
+ /** const stack=createStackNavigator({
 BottomNavigator:
 {
   screen:BottomNavigator
@@ -89,14 +89,28 @@ BottomNavigator:
 {
   tabBarLabel:'APP'
 }
- )
- const AppContainer=createAppContainer(stack);
+ )*/
+ const AppContainer=createAppContainer(BottomNavigator);
 //const AppContainer1=createAppContainer(Tabs);
  export default class App extends Component{
  
  render(){
 return(
+
  <Provider store={store}>
+  
+        <Header>
+        <Left>
+            <Button transparent>
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>THARAMANA KUDAI</Title>
+          </Body>
+          <Right />
+        </Header>
+     
  <AppContainer/>
  </Provider>
  ) }
