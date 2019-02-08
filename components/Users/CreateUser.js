@@ -13,21 +13,25 @@ const Light_gray="#D3D3D3";
   this.state={
     name:'',
     mobilenumber:'',
-password:'',
-
+    password:'',
+    email:'',
+    landmark:'',
+    pincode:'',
+    state:'',
+    deliveryaddress:'',
   };
-  state={isFocused:false}
+//   state={isFocused:false}
 
 
 
 
-  handleFocus=event=>{
-    this.setState({isFocused:true});
+//   handleFocus=event=>{
+//     this.setState({isFocused:true});
 
-    if(this.props.onFocus)
-      this.props.onFocus(event)
-  }
-}
+//     if(this.props.onFocus)
+//       this.props.onFocus(event)
+//   }
+ }
   render() {
     //const { navigate } = this.props.navigation;
      
@@ -59,12 +63,13 @@ if (this.lastMinHeight != minHeight) {
          style={{height: 50, width: 150}}
          selectedValue={(this.state && this.state.pickerValue) || 'a'}
          onValueChange={(value) => {
-           this.setState({pickerValue: value});}}>
-         <Picker.Item label="Admin" value={'a'}/>
-         <Picker.Item label="Customer" value={'b'}/>
+            this.setState({pickerValue: value});}}>
+           <Picker.Item label="Admin" value={'a'}/>
+           <Picker.Item label="Customer" value={'b'}/>
            <Picker.Item label="Logistics" value={'c'}/>
            <Picker.Item label="Staff" value={'d'}/>
          
+      
       </Picker>
  
         <TextInput 
@@ -80,10 +85,9 @@ if (this.lastMinHeight != minHeight) {
        <TextInput  
        placeholder='Mobile Number' 
        selectionColor={Blue}
-      underlineColorAndroid={isFocused ? Blue : Light_gray}
-      onFocus={this.handleFocus}
-      style={styles.textinput}
-      
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}
        onChangeText= {(mobilenumber)=>this.setState({mobilenumber})}
        value={this.state.mobilenumber}/>
 
@@ -91,9 +95,11 @@ if (this.lastMinHeight != minHeight) {
        <TextInput   
        placeholder='Email' 
        selectionColor={Blue}
-      underlineColorAndroid={isFocused ? Blue : Light_gray}
-      onFocus={this.handleFocus}
-      style={styles.textinput}/>   
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}
+       onChangeText= {(email)=>this.setState({email})}
+       value={this.state.email}/>   
        
        <TextInput 
        placeholder='Password' 
@@ -103,32 +109,37 @@ if (this.lastMinHeight != minHeight) {
        onFocus={this.handleFocus}
        style={styles.textinput}
        onChangeText= {(password)=>this.setState({password})}
-       value={this.state.password}
-       />
+       value={this.state.password}/>
 
 
        <TextInput   
-       placeholder='Landmark' 
+       placeholder='Landmark(Optional)' 
        selectionColor={Blue}
        underlineColorAndroid={isFocused ? Blue : Light_gray}
        onFocus={this.handleFocus}
-       style={styles.textinput}/>
+       style={styles.textinput}
+       onChangeText= {(landmark)=>this.setState({landmark})}
+       value={this.state.landmark}/>
 
        
        <TextInput  
-       placeholder='Pincode' 
+       placeholder='Pincode(Optional)' 
        selectionColor={Blue}
        underlineColorAndroid={isFocused ? Blue : Light_gray}
        onFocus={this.handleFocus}
-       style={styles.textinput}/>
+       style={styles.textinput}
+       onChangeText= {(pincode)=>this.setState({pincode})}
+       value={this.state.pincode}/>
 
        
        <TextInput  
-       placeholder='State' 
+       placeholder='State(Optional)' 
        selectionColor={Blue}
-      underlineColorAndroid={isFocused ? Blue : Light_gray}
-      onFocus={this.handleFocus}
-      style={styles.textinput}/>
+       underlineColorAndroid={isFocused ? Blue : Light_gray}
+       onFocus={this.handleFocus}
+       style={styles.textinput}
+       onChangeText= {(state)=>this.setState({state})}
+       value={this.state.state}/>
 
        
        <TextInput  
@@ -136,20 +147,14 @@ if (this.lastMinHeight != minHeight) {
        selectionColor={Blue}
        underlineColorAndroid={isFocused ? Blue : Light_gray}
        onFocus={this.handleFocus}
-       style={styles.textinput}/> 
+       style={styles.textinput}
+       onChangeText= {(deliveryaddress)=>this.setState({deliveryaddress})}
+       value={this.state.deliveryaddress}/> 
        
-        <Button style={styles.Button}
+        <Button onPress={() => this.props.navigation.navigate('Users')} style={styles.Button}
          title="Register"
          type="solid"
-         onPress={() =>
-         this.props.registerUser({
-           
-            name: this.state.name,
-            mobilenumber:this.state.mobilenumber,
-           password:this.state.password
-
-         })
-        }/>
+        />
         </View>
          </ScrollView>  
        </View>   

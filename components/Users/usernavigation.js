@@ -14,7 +14,7 @@ const settingsTabs = createMaterialTopTabNavigator ({
   CreateUser: {
     screen: CreateUser,
     navigationOptions: {
-      tabBarLabel: 'Create_User',
+      tabBarLabel: 'CreateUser',
     
     }
   },

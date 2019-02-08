@@ -49,7 +49,7 @@ const settingsTabs = createMaterialTopTabNavigator ({
   });
     
 const Appcon=createAppContainer(settingsTabs);
-export default class ordernavigation extends Component {
+export default class productnavigation extends Component {
   render(){
 return (
     <Appcon />
