@@ -67,7 +67,7 @@ import {Card,Image,Button} from 'react-native-elements'
          <Body>
          <Card>
               
-                <Text>Fortunite Oil-1ltrs</Text>
+                <Text>Fortune Oil-1ltrs</Text>
                 <Text>Oil and Ghee</Text>
                 <Text note>Display Order-3</Text>
                 <Text note>Banner link key-356</Text>

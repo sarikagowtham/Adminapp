@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { ScrollView,View,StyleSheet, RefreshControl } from 'react-native';
+import { ScrollView,View,StyleSheet, RefreshControl,FlatList } from 'react-native';
 import { Card,Button } from 'react-native-elements'
 //import CreateUsers from './CreateUser';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {displayUser} from '../../project11/redux/actions/userDisplayActions';
-import {Spinner,Icon,List,ListItem,Body,Text} from 'native-base';
+import {List,ListItem,Body,Text} from 'native-base';
+import PTRView from 'react-native-pull-to-refresh';
  
 class Users extends Component {
-  state={isFocused:false,  refreshing: false}
+    state = { 
+    isFetching: false,
+ }
   handleaddress=()=>{
     this.setState({isFocused:true});
  
@@ -16,25 +19,24 @@ class Users extends Component {
   componentWillMount(){
     this.props.displayUser();
   }
-  _onRefresh = () => {
-    this.setState({refreshing: true});
-    fetchData().then(() => {
-      this.setState({refreshing: false});
-    });
+ 
+  onRefresh() {
+     this.setState({ isFetching: true }, function() { this.getApiData() });
   }
+ 
     render() {
      
        return(
          <View>
-        
-       <ScrollView
-        refreshControl = {
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh}
-          />
-        }
-       >
+         <FlatList
+         
+      data={ this.state.FlatListItems }
+      onRefresh={() => this.onRefresh()}
+      refreshing={this.state.isFetching}
+      />
+      
+      
+       <ScrollView>
       
         <List>
         {this.props.displayuser.user.map(p => (
@@ -112,4 +114,4 @@ marginRight:20
 });
   
     export default connect(mapStateToProps,{ displayUser })(Users);
-    
+  

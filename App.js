@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import {View,Text,StyleSheet} from "react-native";
+// import {View,Text,StyleSheet} from "react-native";
 
-import { createBottomTabNavigator,createAppContainer,createDrawerNavigator,createStackNavigator } from 'react-navigation'
+import {createAppContainer,createStackNavigator } from 'react-navigation'
 import {Provider} from 'react-redux';
-import productnavigation from './components/Products/productnavigation'
-import categorynavigation from './components/Category/categorynavigation';
-import usernavigation from './components/Users/usernavigation';
-import accountsnavigation from './components/Accounts/accountsnavigation';
-import ordernavigation from './components/Orders/ordernavigation'
+// import productnavigation from './components/Products/productnavigation'
+// import categorynavigation from './components/Category/categorynavigation';
+// import usernavigation from './components/Users/usernavigation';
+// import accountsnavigation from './components/Accounts/accountsnavigation';
+// import ordernavigation from './components/Orders/ordernavigation'
 import store from './project11/redux/store'
 import Login from './login'
 import Home from './home'
-import {Icon,Header, Left, Body, Right, Title,Button } from 'native-base';
+// import {Icon,Header, Left, Body, Right, Title,Button } from 'native-base';
 
   
 
@@ -79,12 +79,23 @@ import {Icon,Header, Left, Body, Right, Title,Button } from 'native-base';
 //   });
   
   const login = createStackNavigator({
+    
   Login: { screen: Login,
 },
+
   Home: {screen: Home}
+  
   },{
     initialRouteName: 'Login'
-  })
+    
+  },
+  {
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    }
+   })
+  
  const AppContainer=createAppContainer(login);
 //const AppContainer1=createAppContainer(Tabs);
  export default class App extends Component{

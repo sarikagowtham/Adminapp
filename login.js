@@ -24,7 +24,8 @@ import {connect} from 'react-redux';
       return (
         <View>
             <Card>
-             <View style={{flexDirection: 'row',justifyContent:'center'}}>
+             <View style={{flexDirection: 'row',justifyContent:'center'
+            }}>
              <Button style={styles.Button}
               title="Bharati Stores"
               type="outline"/>
@@ -35,7 +36,7 @@ import {connect} from 'react-redux';
              <Input secureTextEntry={true}
               placeholder='Password'/>
              <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
-             <Button  onPress={()=> this.handlepress()} style={styles.Button}
+             <Button onPress={() => this.props.navigation.navigate('Home')} style={styles.Button}
               title="Login"
               type="solid"/>
              <Button style={styles.Button}

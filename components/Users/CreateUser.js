@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput,StyleSheet,Picker,ScrollView,Dimensions} from 'react-native';
+import { View, TextInput,StyleSheet,Picker,ScrollView,Dimensions,Alert} from 'react-native';
 import { Button,Header } from 'react-native-elements';
 import {Icon} from "react-native-vector-icons";
 import {connect} from 'react-redux';
@@ -32,6 +32,30 @@ const Light_gray="#D3D3D3";
 //       this.props.onFocus(event)
 //   }
  }
+ alert = (msg) => {
+  console.log(msg)
+}
+
+onDeleteBTN = () => {
+  this.alert(' OnDelete')
+}
+
+handlepress(){
+  const userData = {
+    name : this.state.name,
+    mobilenumber : this.state.mobilenumber,
+    password : this.state.password,
+    email : this.state.email,
+    landmark : this.state.landmark,
+    pincode : this.state.pincode,
+    state : this.state.state,
+    deliveryaddress : this.state.deliveryaddress
+  }
+  this.props.registerUser(userData);
+  this.setState({name:'',mobilenumber:'',password:'',email:'',landmark:'',pincode:'',state:'',deliveryaddress:''})
+
+}
+
   render() {
     //const { navigate } = this.props.navigation;
      
@@ -39,7 +63,7 @@ const Light_gray="#D3D3D3";
     const {onFocus}=this.props;
     const {minHeight} = this.state;
 // Manually memorise changing style or use something like reselect...
-if (this.lastMinHeight != minHeight) {
+    if (this.lastMinHeight != minHeight) {
     this.lastMinHeight = minHeight;
     this.contentContainerStyle = {minHeight: minHeight}}
      return (
@@ -151,9 +175,10 @@ if (this.lastMinHeight != minHeight) {
        onChangeText= {(deliveryaddress)=>this.setState({deliveryaddress})}
        value={this.state.deliveryaddress}/> 
        
-        <Button onPress={() => this.props.navigation.navigate('Users')} style={styles.Button}
+        <Button onPress={()=>this.handlepress()} style={styles.Button}
          title="Register"
          type="solid"
+         
         />
         </View>
          </ScrollView>  
