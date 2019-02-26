@@ -20,22 +20,13 @@ class Users extends Component {
     this.props.displayUser();
   }
  
-  // onRefresh() {
-  //    this.setState({ isFetching: true }, function() { this.getApiData() });
-  // }
+
  
     render() {
      
        return(
          <View>
-         {/* <FlatList
-         
-      data={ this.state.FlatListItems }
-      onRefresh={() => this.onRefresh()}
-      refreshing={this.state.isFetching}
-      /> */}
-      
-      
+           
        <ScrollView>
       
         <List>
