@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {displayUser} from '../../project11/redux/actions/userDisplayActions';
 import {List,ListItem,Body,Text} from 'native-base';
-import PTRView from 'react-native-pull-to-refresh';
+// import PTRView from 'react-native-pull-to-refresh';
  
 class Users extends Component {
     state = { 
@@ -20,20 +20,20 @@ class Users extends Component {
     this.props.displayUser();
   }
  
-  onRefresh() {
-     this.setState({ isFetching: true }, function() { this.getApiData() });
-  }
+  // onRefresh() {
+  //    this.setState({ isFetching: true }, function() { this.getApiData() });
+  // }
  
     render() {
      
        return(
          <View>
-         <FlatList
+         {/* <FlatList
          
       data={ this.state.FlatListItems }
       onRefresh={() => this.onRefresh()}
       refreshing={this.state.isFetching}
-      />
+      /> */}
       
       
        <ScrollView>

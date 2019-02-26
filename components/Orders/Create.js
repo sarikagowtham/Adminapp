@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View, TextInput,StyleSheet,Picker,ScrollView,Dimensions,Alert,Text} from 'react-native';
 import { Button,Header } from 'react-native-elements';
-import {Icon} from "react-native-vector-icons";
 import {connect} from 'react-redux';
 import {registerUser} from '../../project11/redux/actions/authActions';
 const Blue = "#428AF8";
 const Light_gray="#D3D3D3";
+
+
 
  class CreateUser extends Component {
   constructor(props){
@@ -45,6 +46,7 @@ handlepress(){
 
 }
 
+
   render() {
     //const { navigate } = this.props.navigation;
      
@@ -55,6 +57,7 @@ handlepress(){
     if (this.lastMinHeight != minHeight) {
     this.lastMinHeight = minHeight;
     this.contentContainerStyle = {minHeight: minHeight}}
+    
      return (
       
     
@@ -82,10 +85,11 @@ handlepress(){
        style={styles.textinput}
        onChangeText= {(mobilenumber)=>this.setState({mobilenumber})}
        value={this.state.mobilenumber}/>
-       <View>
+       <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
+       <View style={{paddingTop:15}}>
          <Text>Payment Method</Text>
-       </View>
-        <View style={{flexDirection: 'row',justifyContent:'flex-end'}}>
+         </View>
+        <View style={{paddingLeft:15}}>
         <Picker
          style={{height: 50, width: 150}}
          selectedValue={(this.state && this.state.pickerValue) || 'a'}
@@ -98,8 +102,9 @@ handlepress(){
       
       </Picker>
       </View>
+      </View>
       
-        <Button onPress={()=>this.handlepress()} style={styles.Button}
+        <Button  onPress={() => this.props.navigation.navigate('Searchproducts')} style={styles.Button}
          title="Search Products"
          type="solid"/>
          <Button onPress={()=>this.handlepress()} style={styles.Button}
@@ -108,7 +113,6 @@ handlepress(){
          
         />
         </View>
-      
        </View>   
 
        

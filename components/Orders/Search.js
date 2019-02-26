@@ -1,16 +1,26 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    StyleSheet
-  } from "react-native";
-  
+import {View,Text,StyleSheet,Container} from "react-native";
+import { SearchBar } from 'react-native-elements';
 class Search extends React.Component {
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
     render() {
+      const { search } = this.state;
+
       return (
-        <View style={styles.container}>
-          <Text>Open Up App.js to start working with your app</Text>
-        </View>
+       <View>
+           <SearchBar 
+        placeholder="Search..."
+        onChangeText={this.updateSearch}
+        value={search}
+        platform="android"/>
+      </View>
+        
       );
     }
   }

@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import {createMaterialTopTabNavigator,createAppContainer} from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons'
- import Ordered from './Ordered';
- import Processing from '../Orders/Processing';
- import Delivered from './Delivered';
- import Search from './Search';
- import Create from './Create';
+import Ordered from './Ordered';
+import Processing from '../Orders/Processing';
+import Delivered from './Delivered';
+import Search from './Search';
+import Create from './Create';
+import Searchproducts from './Searchproducts';
 const settingsTabs = createMaterialTopTabNavigator ({
   Ordered: {
     screen: Ordered,
@@ -28,13 +28,7 @@ const settingsTabs = createMaterialTopTabNavigator ({
     
     }
   },
-  Search: {
-    screen: Search,
-    navigationOptions: {
-      tabBarLabel: 'Search',
-    
-    }
-  },
+  
   Create: {
     screen: Create,
     navigationOptions: {
@@ -42,10 +36,24 @@ const settingsTabs = createMaterialTopTabNavigator ({
     
     }
   },
+  Searchproducts: {
+    screen: Searchproducts,
+    navigationOptions: {
+      tabBarLabel: 'Searchproducts',
+    
+    }
+  },
+  Search: {
+    screen: Search,
+    navigationOptions: {
+      tabBarLabel: 'Search',
+    
+    }
+  },
 },
   {//router config
     initialRouteName: 'Ordered',
-    order: ['Ordered','Processing','Delivered','Search','Create'],
+    order: ['Ordered','Processing','Delivered','Create','Searchproducts','Search'],
     //navigation for complete tab navigator
     navigationOptions: {
       tabBarVisible: true
@@ -66,11 +74,11 @@ const settingsTabs = createMaterialTopTabNavigator ({
   
   });
     
-const Appcon=createAppContainer(settingsTabs);
+const Appcontainer=createAppContainer(settingsTabs);
 export default class ordernavigation extends Component {
   render(){
 return (
-    <Appcon />
+    <Appcontainer />
 )
 }
 }
