@@ -1,77 +1,25 @@
 import React, { Component } from 'react';
 import { ScrollView,View,StyleSheet,Picker, RefreshControl,FlatList } from 'react-native';
 import { Card,Button } from 'react-native-elements'
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {displayUser} from '../../project11/redux/actions/userDisplayActions';
 import {List,ListItem,Body,Text} from 'native-base';
  
 class Ordered extends Component {
-  constructor(props){
-    super(props);
-  this.state={
-    mobilenumber:'',
-    name:'',
-    id:'',
-    totalamount:''
-    
-  };
-
- }
- alert = (msg) => {
-  console.log(msg)
-}
-
-onDeleteBTN = () => {
-  this.alert(' OnDelete')
-}
-
-handlepress(){
-  const userData = {
-   
-    mobilenumber : this.state.mobilenumber,
-   
-  }
-  this.props.registerUser(userData);
-  this.setState({mobilenumber:''})
-  this.setState({name:''})
-  this.setState({id:''})
-  this.setState({totalamount:''})
-}
-    state = { 
-    isFetching: false,
- }
-  handleaddress=()=>{
-    this.setState({isFocused:true});
- 
-  }
-  componentWillMount(){
-    this.props.displayUser();
-  }
- 
-
  
     render() {
      
        return(
          <View>
-           
-       <ScrollView>
-      
-        <List>
-        {this.props.displayuser.user.map(p => (
-            <Card>
-        <ListItem key={p._id}>
-       
-        <Body>
-        <View style={{flexDirection:'row',justifyContent:'center'}}>
-        <Text>{p.mobilenumber}</Text>
-        <Text>-</Text>
-        <Text>{p.name}</Text>
-        <Text note>{p.id}[26.02.2019]</Text>
-        <Text note>{p.totalamount}[Cash]</Text>
-        </View>
-        <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
+           <ScrollView>
+             <List>
+               <ListItem>
+             <Card>
+               <Body>
+                  <View style={{flexDirection:'row',justifyContent:'center'}}>
+                    <Text>7200987708</Text>
+                    <Text>-</Text>
+                    <Text>Manoj Kumar</Text>
+                  </View>
+                  <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
              <Button style={styles.Button}
               title="Edit"
               type="clear"/>
@@ -100,40 +48,15 @@ handlepress(){
       </Picker>
       </View>
       </View>
-        </Body>
-        </ListItem>
-        </Card>
-        ))}
-        </List>
-        </ScrollView>
-        
-        {/* <List>
-        {this.props.displayuser.map(p => (
-        <ListItem key={p.id}>
-        
-        <Body>
-      
-        <Text>{p.name}</Text>
-       
-      
-        </Body>
-        </ListItem>
-        ))}
-        </List> */}
-       
-        </View>
-)
-       }
+                  </Body>
+             </Card>
+              </ListItem> 
+             </List>
+           </ScrollView>
+      </View>
+       )
     }
-    
-
-     const mapStateToProps = (state) =>({
-       displayuser : state.displayuser
-     });
-
-  //    function mapStateActionsToProps(dispatch) {
-  //     return bindActionCreators(displayUser, dispatch);
-  // }
+  }
   const styles = StyleSheet.create({
   
     Button: {
@@ -144,5 +67,5 @@ marginRight:20
 }
 });
   
-    export default connect(mapStateToProps,{ displayUser })(Ordered);
+    export default Ordered;
   

@@ -53,7 +53,7 @@ const settingsTabs = createMaterialTopTabNavigator ({
 },
   {//router config
     initialRouteName: 'Ordered',
-    order: ['Ordered','Processing','Delivered','Create','Searchproducts','Search'],
+    order: ['Ordered','Processing','Delivered','Search','Create','Searchproducts'],
     //navigation for complete tab navigator
     navigationOptions: {
       tabBarVisible: true
